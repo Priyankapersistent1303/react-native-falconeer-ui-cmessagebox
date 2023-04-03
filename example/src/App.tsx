@@ -1,18 +1,27 @@
-import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-falconeer-ui-cmessagebox';
-
+import * as React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import CMessageBox from 'react-native-falconeer-ui-cmessagebox';
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const [isVisible, setVisible] = React.useState(false);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <CMessageBox
+        title="Access Denied"
+        message="You are not allowed to perform this operation.Please contact administrator."
+        type="Warning"
+        isVisible={isVisible}
+        onClose={() => {
+          setVisible(false);
+        }}
+      />
+      <TouchableOpacity
+        onPress={() => {
+          setVisible(true);
+        }}
+      >
+        <Text>Open</Text>
+      </TouchableOpacity>
     </View>
   );
 }

@@ -11,11 +11,18 @@ npm install react-native-falconeer-ui-cmessagebox
 ## Usage
 
 ```js
-import { multiply } from 'react-native-falconeer-ui-cmessagebox';
+import CMessageBox from 'react-native-falconeer-ui-cmessagebox';
 
 // ...
-
-const result = await multiply(3, 7);
+<CMessageBox
+        title="Access Denied"
+        message="You are not allowed to perform this operation. Please contact administrator."
+        type="Error"
+        isVisible={isVisible}
+        onClose={() => {
+          setVisible(false);
+        }}
+      />
 ```
 
 ## Contributing
